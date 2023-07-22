@@ -35,6 +35,8 @@ def redirect_url(short_url):
         return "URL not found", 404
 
 if __name__ == "__main__":
+    with open("shortened_urls.json", r) as f:
+        shortened_urls = json.load(f)
     app.run(debug=True)
     
                         
