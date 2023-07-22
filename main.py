@@ -11,9 +11,9 @@ def generate_shortened_url(length=6):
     short_url = "".join(random.choice(chars) for _ in range(length))
     return short_url
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route("/", methods=["GET", "POST"])
 def index():
-    if request.method == 'POST':
+    if request.method == "POST":
         long_url = request.form['long_url']
         short_url = generate_shortened_url()
         while short_url in shortened_urls:
@@ -25,7 +25,7 @@ def index():
 
 @app.route("/<short_url>")
 def redirect_url(short_url):
-    long_url = shortened_urls.get[short_url]
+    long_url = shortened_urls.get(short_url)
     if long_url:
         return redirect(long_url)
     else:
